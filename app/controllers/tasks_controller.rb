@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class TasksController < ApplicationController
   def index
       @tasks = Task.all
   end
@@ -40,17 +40,17 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-      @message = Message.find(params[:id])
+      @message = Task.find(params[:id])
     @message.destroy
 
     flash[:success] = 'Message は正常に削除されました'
-    redirect_to messages_url
+    redirect_to tasks_url
   end
   
   private
 
-  def message_params
-    params.require(:message).permit(:content)
+  def task_params
+    params.require(:task).permit(:content)
   end
 
 end
